@@ -1,9 +1,24 @@
 
 import { GoogleGenAI, Type } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+// Safe access to API Key
+const getApiKey = () => {
+  try {
+    return process.env.API_KEY || '';
+  } catch {
+    return '';
+  }
+};
 
 export const parseNaturalLanguageTask = async (input: string, referenceDate: string) => {
+  const apiKey = getApiKey();
+  if (!apiKey) {
+    console.warn("Gemini API Key is missing. Natural language parsing will not work.");
+    return null;
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
+  
   const response = await ai.models.generateContent({
     model: 'gemini-3-flash-preview',
     contents: `Parse the following task description and convert it into a structured JSON object. 
@@ -31,7 +46,9 @@ export const parseNaturalLanguageTask = async (input: string, referenceDate: str
   });
 
   try {
-    return JSON.parse(response.text.trim());
+    const text = response.text;
+    if (!text) return null;
+    return JSON.parse(text.trim());
   } catch (e) {
     console.error("Failed to parse Gemini response", e);
     return null;
