@@ -3,6 +3,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import SmartTaskInput from './components/SmartTaskInput';
 import DayCell from './components/DayCell';
 import TaskList from './components/TaskList';
+import TaskModal from './components/TaskModal';
 import { CalendarTask } from './types';
 
 const STORAGE_KEY = 'lumina_calendar_tasks';
@@ -17,6 +18,7 @@ const App: React.FC = () => {
   const [currentDate, setCurrentDate] = useState(new Date()); 
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [viewMode, setViewMode] = useState<ViewMode>('month');
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
@@ -72,6 +74,7 @@ const App: React.FC = () => {
     const taskDate = new Date(task.date);
     setCurrentDate(taskDate);
     setSelectedDate(taskDate);
+    setIsModalOpen(false);
   };
 
   const toggleTask = (id: string) => {
@@ -205,6 +208,15 @@ const App: React.FC = () => {
 
         <aside className="lg:col-span-4 h-full">
           <div className="sticky top-8 bg-gray-50/50 p-6 rounded-3xl border border-gray-100 min-h-[600px] flex flex-col">
+            <div className="mb-4">
+              <button 
+                onClick={() => setIsModalOpen(true)}
+                className="w-full flex items-center justify-center gap-2 py-3 bg-white border-2 border-dashed border-gray-200 text-gray-500 rounded-2xl hover:border-indigo-400 hover:text-indigo-600 transition-all font-bold text-sm"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                Create New Event
+              </button>
+            </div>
             <TaskList 
               tasks={selectedDateTasks} 
               selectedDate={selectedDate}
@@ -214,6 +226,13 @@ const App: React.FC = () => {
           </div>
         </aside>
       </div>
+
+      <TaskModal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        onSave={addTask}
+        initialDate={selectedDate.toISOString().split('T')[0]}
+      />
     </div>
   );
 };
