@@ -97,6 +97,19 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSave, initialD
     }
   }, [initialDate, isOpen]);
 
+  const handleStartTimeChange = (newStartTime: string) => {
+    // Automatically set end time to 1 hour after start time
+    const [h, m] = newStartTime.split(':').map(Number);
+    const endH = (h + 1) % 24;
+    const newEndTime = `${endH.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`;
+    
+    setFormData(prev => ({
+      ...prev,
+      startTime: newStartTime,
+      endTime: newEndTime
+    }));
+  };
+
   if (!isOpen) return null;
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -204,7 +217,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSave, initialD
             <TimePicker 
               label="Starts (24h)" 
               value={formData.startTime} 
-              onChange={time => setFormData(f => ({ ...f, startTime: time }))} 
+              onChange={handleStartTimeChange} 
             />
             <TimePicker 
               label="Ends (24h)" 

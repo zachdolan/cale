@@ -19,7 +19,8 @@ const App: React.FC = () => {
 
   const [theme, setTheme] = useState<Theme>(() => {
     const saved = localStorage.getItem(THEME_KEY);
-    return (saved as Theme) || 'light';
+    // Change default to 'dark'
+    return (saved as Theme) || 'dark';
   });
 
   const [tasks, setTasks] = useState<CalendarTask[]>(() => {
@@ -128,7 +129,7 @@ const App: React.FC = () => {
   }
 
   return (
-    <div className="h-screen bg-gray-50 dark:bg-gray-950 transition-colors duration-300 flex flex-col overflow-hidden">
+    <div className="h-screen bg-gray-50 dark:bg-gray-950 transition-colors duration-300 flex flex-col overflow-hidden text-gray-900 dark:text-gray-100">
       <div className="w-full flex-1 flex flex-col overflow-hidden">
         
         {/* Compact Header */}
