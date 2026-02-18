@@ -4,6 +4,7 @@ import SmartTaskInput from './components/SmartTaskInput';
 import DayCell from './components/DayCell';
 import TaskList from './components/TaskList';
 import TaskModal from './components/TaskModal';
+import PasswordGate from './components/PasswordGate';
 import { CalendarTask } from './types';
 
 const STORAGE_KEY = 'lumina_calendar_tasks';
@@ -11,6 +12,10 @@ const STORAGE_KEY = 'lumina_calendar_tasks';
 type ViewMode = 'month' | 'week';
 
 const App: React.FC = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return sessionStorage.getItem('lumina_auth') === 'true';
+  });
+
   const [tasks, setTasks] = useState<CalendarTask[]>(() => {
     const saved = localStorage.getItem(STORAGE_KEY);
     return saved ? JSON.parse(saved) : [];
@@ -91,6 +96,10 @@ const App: React.FC = () => {
   }, [selectedDate, tasks]);
 
   const today = new Date();
+
+  if (!isAuthenticated) {
+    return <PasswordGate onAuthenticated={() => setIsAuthenticated(true)} />;
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
