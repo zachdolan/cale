@@ -19,7 +19,6 @@ const App: React.FC = () => {
 
   const [theme, setTheme] = useState<Theme>(() => {
     const saved = localStorage.getItem(THEME_KEY);
-    // Change default to 'dark'
     return (saved as Theme) || 'dark';
   });
 
@@ -137,12 +136,12 @@ const App: React.FC = () => {
           <div className="flex items-center gap-6">
             <h1 className="text-2xl font-black text-gray-900 dark:text-white tracking-tighter flex items-center gap-2">
               Lumina
-              <span className="bg-indigo-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black uppercase tracking-widest">CAL</span>
+              <span className="bg-brand-600 text-white text-[10px] px-2 py-0.5 rounded-full font-black uppercase tracking-widest">CAL</span>
             </h1>
             <div className="h-6 w-px bg-gray-100 dark:bg-gray-800" />
             <button 
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-xl hover:bg-indigo-700 shadow-lg shadow-indigo-100 dark:shadow-none transition-all font-bold text-sm"
+              className="flex items-center gap-2 px-4 py-2 bg-brand-600 text-white rounded-xl hover:bg-brand-700 shadow-lg shadow-brand-100 dark:shadow-none transition-all font-bold text-sm"
             >
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M12 5v14M5 12h14"/></svg>
               Add Event
@@ -152,7 +151,7 @@ const App: React.FC = () => {
           <div className="flex items-center gap-4">
             <button 
               onClick={toggleTheme}
-              className="p-2 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl text-gray-500 hover:text-indigo-600 transition-all"
+              className="p-2 bg-gray-50 dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-xl text-gray-500 hover:text-brand-600 transition-all"
             >
               {theme === 'light' ? (
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
@@ -180,13 +179,13 @@ const App: React.FC = () => {
                   <div className="bg-white dark:bg-gray-900 p-1 rounded-2xl border border-gray-200 dark:border-gray-800 flex gap-1 shadow-sm">
                     <button 
                       onClick={() => setViewMode('month')}
-                      className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${viewMode === 'month' ? 'bg-indigo-600 text-white shadow-md' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'}`}
+                      className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${viewMode === 'month' ? 'bg-brand-600 text-white shadow-md' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'}`}
                     >
                       Month
                     </button>
                     <button 
                       onClick={() => setViewMode('week')}
-                      className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${viewMode === 'week' ? 'bg-indigo-600 text-white shadow-md' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'}`}
+                      className={`px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest transition-all ${viewMode === 'week' ? 'bg-brand-600 text-white shadow-md' : 'text-gray-400 hover:text-gray-600 dark:hover:text-gray-200'}`}
                     >
                       Week
                     </button>
@@ -204,7 +203,7 @@ const App: React.FC = () => {
                       setCurrentDate(now);
                       handleDayClick(now);
                     }}
-                    className="px-6 py-2 text-xs font-black uppercase tracking-widest text-indigo-600 dark:text-indigo-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                    className="px-6 py-2 text-xs font-black uppercase tracking-widest text-brand-600 dark:text-brand-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
                   >
                     Today
                   </button>

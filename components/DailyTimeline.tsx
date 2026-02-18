@@ -23,7 +23,7 @@ const DailyTimeline: React.FC<DailyTimelineProps> = ({ tasks, selectedDate, onTo
       case 'high': return 'bg-rose-500';
       case 'medium': return 'bg-amber-500';
       case 'low': return 'bg-emerald-500';
-      default: return 'bg-indigo-500';
+      default: return 'bg-brand-500';
     }
   };
 
@@ -55,7 +55,7 @@ const DailyTimeline: React.FC<DailyTimelineProps> = ({ tasks, selectedDate, onTo
             {selectedDate.toLocaleDateString(undefined, { month: 'long', day: 'numeric', year: 'numeric' })}
           </p>
           <div className="h-1 w-1 rounded-full bg-gray-300 dark:bg-gray-700" />
-          <span className="text-xs font-black text-indigo-600 dark:text-indigo-400 uppercase tracking-widest">
+          <span className="text-xs font-black text-brand-600 dark:text-brand-400 uppercase tracking-widest">
             {tasks.length} {tasks.length === 1 ? 'Event' : 'Events'}
           </span>
         </div>

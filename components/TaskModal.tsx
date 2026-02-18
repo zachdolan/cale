@@ -32,14 +32,14 @@ const TimePicker: React.FC<{
       <div className="flex items-center bg-gray-50 dark:bg-gray-950 border border-gray-100 dark:border-gray-800 rounded-xl p-2 gap-3 justify-center">
         {/* Hour Column */}
         <div className="flex flex-col items-center">
-          <button type="button" onClick={() => updateTime(h24 + 1, m)} className="p-1 text-gray-400 hover:text-indigo-500 transition-colors">
+          <button type="button" onClick={() => updateTime(h24 + 1, m)} className="p-1 text-gray-400 hover:text-brand-500 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="m18 15-6-6-6 6"/></svg>
           </button>
           <div className="flex flex-col items-center">
             <span className="font-black text-gray-900 dark:text-white text-xl tabular-nums">{h24.toString().padStart(2, '0')}</span>
             <span className="text-[8px] font-bold text-gray-400 uppercase tracking-tighter">Hrs</span>
           </div>
-          <button type="button" onClick={() => updateTime(h24 - 1, m)} className="p-1 text-gray-400 hover:text-indigo-500 transition-colors">
+          <button type="button" onClick={() => updateTime(h24 - 1, m)} className="p-1 text-gray-400 hover:text-brand-500 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="m6 9 6 6 6-6"/></svg>
           </button>
         </div>
@@ -48,14 +48,14 @@ const TimePicker: React.FC<{
 
         {/* Minute Column */}
         <div className="flex flex-col items-center">
-          <button type="button" onClick={() => updateTime(h24, (m + 5) % 60)} className="p-1 text-gray-400 hover:text-indigo-500 transition-colors">
+          <button type="button" onClick={() => updateTime(h24, (m + 5) % 60)} className="p-1 text-gray-400 hover:text-brand-500 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="m18 15-6-6-6 6"/></svg>
           </button>
           <div className="flex flex-col items-center">
             <span className="font-black text-gray-900 dark:text-white text-xl tabular-nums">{m.toString().padStart(2, '0')}</span>
             <span className="text-[8px] font-bold text-gray-400 uppercase tracking-tighter">Min</span>
           </div>
-          <button type="button" onClick={() => updateTime(h24, (m - 5 + 60) % 60)} className="p-1 text-gray-400 hover:text-indigo-500 transition-colors">
+          <button type="button" onClick={() => updateTime(h24, (m - 5 + 60) % 60)} className="p-1 text-gray-400 hover:text-brand-500 transition-colors">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3"><path d="m6 9 6 6 6-6"/></svg>
           </button>
         </div>
@@ -162,7 +162,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSave, initialD
               value={formData.title}
               onChange={e => setFormData({ ...formData, title: e.target.value })}
               placeholder="What are we doing?"
-              className="w-full px-5 py-4 bg-gray-50 dark:bg-gray-950 border border-gray-100 dark:border-gray-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all font-bold text-lg text-gray-900 dark:text-white"
+              className="w-full px-5 py-4 bg-gray-50 dark:bg-gray-950 border border-gray-100 dark:border-gray-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-brand-500 transition-all font-bold text-lg text-gray-900 dark:text-white"
             />
           </div>
 
@@ -174,7 +174,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSave, initialD
                 onClick={() => setIsMultiDay(!isMultiDay)}
                 className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full transition-all border ${
                   isMultiDay 
-                  ? 'bg-indigo-100 border-indigo-200 text-indigo-600 dark:bg-indigo-900/30 dark:border-indigo-800 dark:text-indigo-400' 
+                  ? 'bg-brand-100 border-brand-200 text-brand-600 dark:bg-brand-900/30 dark:border-brand-800 dark:text-brand-400' 
                   : 'bg-gray-50 border-gray-100 text-gray-400 dark:bg-gray-800 dark:border-gray-700'
                 }`}
               >
@@ -195,7 +195,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSave, initialD
                       endDate: isMultiDay && formData.endDate < newDate ? newDate : formData.endDate 
                     });
                   }}
-                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-950 border border-gray-100 dark:border-gray-800 rounded-xl focus:ring-2 focus:ring-indigo-500 text-gray-900 dark:text-white font-medium"
+                  className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-950 border border-gray-100 dark:border-gray-800 rounded-xl focus:ring-2 focus:ring-brand-500 text-gray-900 dark:text-white font-medium"
                 />
               </div>
 
@@ -206,7 +206,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSave, initialD
                     min={formData.date}
                     value={formData.endDate}
                     onChange={e => setFormData({ ...formData, endDate: e.target.value })}
-                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-950 border border-gray-100 dark:border-gray-800 rounded-xl focus:ring-2 focus:ring-indigo-500 text-gray-900 dark:text-white font-medium"
+                    className="w-full px-4 py-3 bg-gray-50 dark:bg-gray-950 border border-gray-100 dark:border-gray-800 rounded-xl focus:ring-2 focus:ring-brand-500 text-gray-900 dark:text-white font-medium"
                   />
                 </div>
               )}
@@ -259,7 +259,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, onSave, initialD
             </button>
             <button
               type="submit"
-              className="flex-[2] px-6 py-5 bg-indigo-600 text-white rounded-2xl font-black hover:bg-indigo-700 shadow-xl shadow-indigo-200 dark:shadow-none transition-all active:scale-[0.98] uppercase tracking-widest text-xs"
+              className="flex-[2] px-6 py-5 bg-brand-600 text-white rounded-2xl font-black hover:bg-brand-700 shadow-xl shadow-brand-200 dark:shadow-none transition-all active:scale-[0.98] uppercase tracking-widest text-xs"
             >
               Add Event
             </button>

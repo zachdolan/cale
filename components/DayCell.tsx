@@ -23,17 +23,17 @@ const DayCell: React.FC<DayCellProps> = ({ day, tasks, isToday, isSelected, onCl
       className={`p-2 border rounded-xl transition-all cursor-pointer flex flex-col relative
         ${isExpanded ? 'h-full min-h-[400px]' : 'h-24 md:h-32'}
         ${isSelected 
-          ? 'ring-2 ring-indigo-500 ring-inset bg-indigo-50/30 dark:bg-indigo-900/20 border-indigo-200 dark:border-indigo-800' 
+          ? 'ring-2 ring-brand-500 ring-inset bg-brand-50/30 dark:bg-brand-900/10 border-brand-200 dark:border-brand-800' 
           : 'bg-white dark:bg-gray-900 border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800'}
-        ${isToday ? 'border-indigo-300 dark:border-indigo-500' : ''}
+        ${isToday ? 'border-brand-300 dark:border-brand-500 shadow-sm' : ''}
       `}
     >
       <div className="flex justify-between items-start">
-        <span className={`text-sm font-semibold h-7 w-7 flex items-center justify-center rounded-full ${isToday ? 'bg-indigo-600 text-white' : 'text-gray-700 dark:text-gray-300'}`}>
+        <span className={`text-sm font-black h-7 w-7 flex items-center justify-center rounded-full transition-all ${isToday ? 'bg-brand-600 text-white shadow-md shadow-brand-200 dark:shadow-none' : 'text-gray-700 dark:text-gray-300'}`}>
           {day}
         </span>
         {tasks.length > 0 && (
-          <span className="text-[10px] font-medium text-gray-400 dark:text-gray-500 px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-md">
+          <span className="text-[10px] font-black text-gray-400 dark:text-gray-500 px-1.5 py-0.5 bg-gray-100 dark:bg-gray-800 rounded-md">
             {tasks.length}
           </span>
         )}
@@ -50,24 +50,24 @@ const DayCell: React.FC<DayCellProps> = ({ day, tasks, isToday, isSelected, onCl
                   ${task.completed 
                     ? 'opacity-50 bg-gray-50 dark:bg-gray-950 text-gray-400 dark:text-gray-600' 
                     : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-200'}
-                  ${isMultiDay ? 'border-l-2 border-l-indigo-400 bg-indigo-50/30 dark:bg-indigo-900/20' : 'border border-gray-100 dark:border-gray-700'}
+                  ${isMultiDay ? 'border-l-2 border-l-brand-400 bg-brand-50/30 dark:bg-brand-900/20' : 'border border-gray-100 dark:border-gray-700'}
                   ${!task.completed && task.priority === 'high' ? 'border-r-2 border-r-rose-400' : ''}
                   ${!task.completed && task.priority === 'medium' ? 'border-r-2 border-r-amber-400' : ''}
                   ${!task.completed && task.priority === 'low' ? 'border-r-2 border-r-emerald-400' : ''}
                 `}
               >
                 <div className="flex items-center gap-1">
-                  {task.startTime && !isMultiDay && <span className="text-indigo-500 dark:text-indigo-400 font-bold shrink-0">{task.startTime}</span>}
+                  {task.startTime && !isMultiDay && <span className="text-brand-500 dark:text-brand-400 font-black shrink-0">{task.startTime}</span>}
                   {isMultiDay && (
-                    <svg className="shrink-0 text-indigo-400" xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12H3"/><path d="m15 18 6-6-6-6"/></svg>
+                    <svg className="shrink-0 text-brand-400" xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12H3"/><path d="m15 18 6-6-6-6"/></svg>
                   )}
-                  <span className="truncate">{task.title}</span>
+                  <span className="truncate font-medium">{task.title}</span>
                 </div>
               </div>
             );
           })}
           {!isExpanded && tasks.length > 2 && (
-            <div className="text-[9px] text-gray-400 dark:text-gray-600 text-center font-bold">
+            <div className="text-[9px] text-gray-400 dark:text-gray-600 text-center font-black">
               +{tasks.length - 2} more
             </div>
           )}

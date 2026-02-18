@@ -13,10 +13,10 @@ const VisualBusyness: React.FC<VisualBusynessProps> = ({ tasks }) => {
   const getTaskColor = (task: CalendarTask) => {
     if (task.completed) return 'bg-gray-200 dark:bg-gray-800';
     switch (task.priority) {
-      case 'high': return 'bg-rose-400';
-      case 'medium': return 'bg-amber-400';
-      case 'low': return 'bg-emerald-400';
-      default: return 'bg-indigo-300 dark:bg-indigo-600';
+      case 'high': return 'bg-rose-500';
+      case 'medium': return 'bg-amber-500';
+      case 'low': return 'bg-emerald-500';
+      default: return 'bg-brand-500 dark:bg-brand-700';
     }
   };
 
@@ -39,7 +39,7 @@ const VisualBusyness: React.FC<VisualBusynessProps> = ({ tasks }) => {
           title={`${task.title} (${task.priority || 'No priority'})`}
         />
       ))}
-      {tasks.length > 12 && <div className="text-[8px] text-gray-400 ml-1">+{tasks.length - 12}</div>}
+      {tasks.length > 12 && <div className="text-[8px] font-black text-gray-400 ml-1">+{tasks.length - 12}</div>}
     </div>
   );
 };
