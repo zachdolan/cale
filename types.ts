@@ -9,7 +9,7 @@ export interface CalendarTask {
   endDate?: string; // ISO format: YYYY-MM-DD (End Date for ranges)
   startTime?: string; // HH:mm
   endTime?: string; // HH:mm
-  priority: Priority;
+  priority?: Priority;
   completed: boolean;
   category?: string;
 }

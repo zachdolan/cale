@@ -25,6 +25,7 @@ export const parseNaturalLanguageTask = async (input: string, referenceDate: str
     Current reference date is ${referenceDate}. 
     Support multi-day tasks (ranges) and specific time durations. 
     If a task spans multiple days, provide an 'endDate'. 
+    Only assign a 'priority' (low, medium, high) if the user explicitly mentions words like "urgent", "important", "low priority", etc. If not mentioned, omit the priority field.
     Input: "${input}"`,
     config: {
       responseMimeType: "application/json",
@@ -40,7 +41,7 @@ export const parseNaturalLanguageTask = async (input: string, referenceDate: str
           description: { type: Type.STRING },
           category: { type: Type.STRING }
         },
-        required: ['title', 'date', 'priority']
+        required: ['title', 'date']
       }
     }
   });

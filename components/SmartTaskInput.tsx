@@ -42,8 +42,8 @@ const SmartTaskInput: React.FC<SmartTaskInputProps> = ({ onTaskAdded, currentDat
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="Try 'Gym tomorrow at 6pm' or 'Submit report Friday high priority'..."
-        className="w-full p-4 pl-12 pr-12 bg-white border border-gray-200 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+        placeholder="Try 'Gym tomorrow at 6pm' or 'Meeting 3pm high priority'..."
+        className="w-full p-4 pl-12 pr-12 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-900 dark:text-gray-100 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all placeholder:text-gray-400 dark:placeholder:text-gray-600"
         disabled={isLoading}
       />
       <div className="absolute left-4 top-1/2 -translate-y-1/2 text-indigo-500">
