@@ -1,0 +1,5 @@
+{
+  "name": "Dac Calendar",
+  "description": "An AI-powered smart calendar that visualizes daily workload through density heatmaps and uses Gemini for natural language task processing.",
+  "requestFramePermissions": []
+}
