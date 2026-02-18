@@ -103,7 +103,6 @@ const App: React.FC = () => {
           <p className="text-gray-500 mt-1 font-medium">Smart AI scheduling with visual density tracking.</p>
         </div>
         <div className="w-full md:w-1/2">
-          {/* Smart Input is the primary entry point now */}
           <SmartTaskInput onTaskAdded={addTask} currentDate={selectedDate} />
         </div>
       </header>
